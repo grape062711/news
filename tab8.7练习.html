@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      *{margin: 0;padding: 0;border: 0;list-style: none;text-decoration: none;}
+      .box{width: 298px;
+           height: 98px;
+           border: 1px solid #ccc;
+           margin: 0 auto;
+           overflow: hidden;
+           font-size: 12px;}
+      .title{height: 27px;
+             position: relative;
+             background: #eee;}
+      .title ul{position: absolute;
+                width: 301px;
+                left: -1px;}
+      .title li{float: left;
+                width: 58px;
+                height: 26px;
+                line-height: 26px;
+                text-align: center;
+                border-bottom: 1px solid #ccc;
+                padding: 0 1px;}
+      .title a:link,.title a:visited{text-decoration: none;
+                                     color: black;}
+      .title li.select{background: white;
+                       border-bottom-color: white;
+                       border-left: 1px solid #eee;
+                       border-right: 1px solid #eee;
+                       font-weight: bold;
+                       padding: 0;}
+      .content .mod{margin: 10px 10px 10px 19px;}
+      .content .mod ul li{float: left;
+                          width: 134px;
+                          height: 25px;}
+
+
+    </style>
+    <script type="text/javascript">
+     window.onload=function(){
+       var index=0;
+       var timer=null;
+
+       var titles=document.getElementById('title').getElementsByTagName('li');
+       var divs=document.getElementById('content').getElementsByTagName('div');
+
+       for (var i = 0; i < titles.length; i++) {
+         titles[i].id=i;
+         titles[i].onmouseover=function(){
+           var that=this;
+           if (timer) {
+             clearTimeout(timer);
+             timer=null;
+           }
+           timer=setTimeout(function(){
+             for (var j = 0; j < titles.length; j++) {
+               titles[j].className="";
+               divs[j].style.display="none";
+             }
+             titles[that.id].className="select";
+             divs[that.id].style.display="block";
+           },500);
+         }
+       }
+     }
+    </script>
+  </head>
+  <body>
+    <div class="box" id="box">
+      <div class="title" id="title">
+        <ul>
+          <li><a href="#">公告</a></li>
+          <li><a href="#">规则</a></li>
+          <li><a href="#">论坛</a></li>
+          <li><a href="#">安全</a></li>
+          <li class="select"><a href="#">公益</a></li>
+        </ul>
+      </div>
+      <div class="content" id="content">
+        <div class="mod" style="display:none">
+          <ul>
+            <li><a href="#">人</a></li>
+            <li><a href="#">问</a></li>
+            <li><a href="#">地</a></li>
+            <li><a href="#">理</a></li>
+          </ul>
+        </div>
+        <div class="mod" style="display:none">
+          <ul>
+            <li><a href="#">天</a></li>
+            <li><a href="#">地</a></li>
+            <li><a href="#">玄</a></li>
+            <li><a href="#">黄</a></li>
+          </ul>
+        </div>
+        <div class="mod" style="display:none">
+          <ul>
+            <li><a href="#">宇</a></li>
+            <li><a href="#">宙</a></li>
+            <li><a href="#">洪</a></li>
+            <li><a href="#">荒</a></li>
+          </ul>
+        </div>
+        <div class="mod" style="display:none">
+          <ul>
+            <li><a href="#">山</a></li>
+            <li><a href="#">河</a></li>
+            <li><a href="#">壮</a></li>
+            <li><a href="#">丽</a></li>
+          </ul>
+        </div>
+        <div class="mod" style="display:block">
+          <ul>
+            <li><a href="#">人</a></li>
+            <li><a href="#">问</a></li>
+            <li><a href="#">地</a></li>
+            <li><a href="#">理</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
